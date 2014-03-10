@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = skin;
 
-		GUILayout.Label("Height" + height.ToString("f0"));
+		GUILayout.Label("Height: " + height.ToString("f0"));
 
 		GUILayout.Label("High Score: " + highScore);
 
