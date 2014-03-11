@@ -15,7 +15,11 @@ public class ThrustControll : MonoBehaviour {
 	float currentVolume = 0;
 
 	bool isThrusting = false;
-	
+
+	public Texture aTexture;
+
+	public GUISkin skin;
+
 	void Update ()
 	{
 		rightEnginePosition = rightEngine.position;
@@ -65,10 +69,8 @@ public class ThrustControll : MonoBehaviour {
 		}
 
 		if(isThrusting){
-			Debug.Log(maxVolume + "");
 			currentVolume = Mathf.Lerp(currentVolume, maxVolume,  0.2f);
 		}else{
-			Debug.Log(maxVolume + "");
 			currentVolume = Mathf.Lerp(currentVolume, 0, 0.2f);
 		}
 
@@ -91,4 +93,15 @@ public class ThrustControll : MonoBehaviour {
 		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEnginePosition);	
 	}
 
+
+	void OnGUI ()
+	{
+
+		GUI.skin = skin;
+//		GUI.DrawTexture(new Rect(10, 10, Screen.width/2 -20, Screen.height-20), aTexture);
+
+		//GUI.Label(new Rect(Screen.width / 2,Screen.height/2, 300, 100), "Tap the Rigth and Left side of the screen to control the Thrust of the rocket");
+
+//		GUI.DrawTexture(new Rect(Screen.width/2 + 10, 10, Screen.width/2-20 , Screen.height-20), aTexture);
+	}
 }
