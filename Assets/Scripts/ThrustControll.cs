@@ -16,8 +16,6 @@ public class ThrustControll : MonoBehaviour {
 
 	bool isThrusting = false;
 
-	public Texture aTexture;
-
 	public GUISkin skin;
 
 	void Update ()
@@ -63,14 +61,16 @@ public class ThrustControll : MonoBehaviour {
 			isThrusting = true;
 		}
 
-		if( Input.GetAxis("ThrustR") <= 0 && Input.GetAxis("ThrustL") <= 0 && Input.touchCount <= 0)
+		if ( Input.GetAxis("ThrustR") <= 0 && Input.GetAxis("ThrustL") <= 0 && Input.touchCount <= 0)
 		{
 			isThrusting = false;
 		}
 
-		if(isThrusting){
+		if (isThrusting)
+		{
 			currentVolume = Mathf.Lerp(currentVolume, maxVolume,  0.2f);
-		}else{
+		} else
+		{
 			currentVolume = Mathf.Lerp(currentVolume, 0, 0.2f);
 		}
 
@@ -78,6 +78,7 @@ public class ThrustControll : MonoBehaviour {
 
 		float max = 1.2f;
 		float min = 0.1f;
+
 		audio.pitch = Mathf.Min(max, min +  rigidbody2D.velocity.magnitude / 90 );
 
 	}
@@ -93,15 +94,8 @@ public class ThrustControll : MonoBehaviour {
 		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEnginePosition);	
 	}
 
-
 	void OnGUI ()
 	{
-
 		GUI.skin = skin;
-//		GUI.DrawTexture(new Rect(10, 10, Screen.width/2 -20, Screen.height-20), aTexture);
-
-		//GUI.Label(new Rect(Screen.width / 2,Screen.height/2, 300, 100), "Tap the Rigth and Left side of the screen to control the Thrust of the rocket");
-
-//		GUI.DrawTexture(new Rect(Screen.width/2 + 10, 10, Screen.width/2-20 , Screen.height-20), aTexture);
 	}
 }
