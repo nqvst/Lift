@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
 	public Transform explosionPrefab;	
 
 	float health;
+	bool isDead = false;
 	public float damageImpact = 100;
 
 	public float maxHealth = 100;
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(health <= 0){
+		if(health <= 0 && !isDead){
 			Die();
 		}
 	}
@@ -35,12 +36,14 @@ public class Health : MonoBehaviour {
 		Debug.Log(coll.collider.transform.name);
 		health -= rigidbody2D.velocity.magnitude * damageImpact;
 		health = 0;
+		rigidbody2D.AddForceAtPosition(transform.TransformDirection(coll.contacts[0].point) * 1000, coll.transform.position - transform.position);
 	}
 
 	void Die()
 	{
+		isDead = true;
 		gameObject.SendMessage("OnDie");
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 		Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 		Invoke("Respawn", 1f);
 	}
