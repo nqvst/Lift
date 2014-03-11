@@ -35,7 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -45,130 +45,67 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: Sprites_0
+    - name: Danger
       rect:
         serializedVersion: 2
-        x: 50
-        y: 1350
-        width: 100
-        height: 600
+        x: 12
+        y: 1321
+        width: 219
+        height: 165
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_1
+    - name: Rocket
       rect:
         serializedVersion: 2
-        x: 200
-        y: 1850
-        width: 600
-        height: 100
+        x: 649
+        y: 502
+        width: 711
+        height: 962
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_2
+    - name: Construction
       rect:
         serializedVersion: 2
-        x: 850
-        y: 1350
-        width: 600
-        height: 600
+        x: 12
+        y: 1149
+        width: 219
+        height: 165
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_3
+    - name: Wood
       rect:
         serializedVersion: 2
-        x: 1741
-        y: 1739
-        width: 220
-        height: 220
+        x: 12
+        y: 972
+        width: 219
+        height: 165
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_4
+    - name: White
       rect:
         serializedVersion: 2
-        x: 200
-        y: 1600
-        width: 200
-        height: 200
+        x: 12
+        y: 795
+        width: 219
+        height: 165
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_5
+    - name: Rock1
       rect:
         serializedVersion: 2
-        x: 500
-        y: 1500
-        width: 300
-        height: 300
+        x: 20
+        y: 267
+        width: 539
+        height: 465
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: Sprites_6
+    - name: Rock2
       rect:
         serializedVersion: 2
-        x: 200
-        y: 1450
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_7
-      rect:
-        serializedVersion: 2
-        x: 1580
-        y: 1300
-        width: 400
-        height: 400
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_8
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 1140
-        width: 600
-        height: 160
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_9
-      rect:
-        serializedVersion: 2
-        x: 1036
-        y: 533
-        width: 943
-        height: 643
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_10
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 724
-        width: 437
-        height: 328
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_11
-      rect:
-        serializedVersion: 2
-        x: 550
-        y: 724
-        width: 437
-        height: 328
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_12
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 352
-        width: 437
-        height: 328
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Sprites_13
-      rect:
-        serializedVersion: 2
-        x: 550
-        y: 352
-        width: 437
-        height: 328
+        x: 598
+        y: 29
+        width: 527
+        height: 381
       alignment: 0
       pivot: {x: .5, y: .5}
   spritePackingTag: 
