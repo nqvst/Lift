@@ -12,7 +12,7 @@ public class ObstacleScroll : MonoBehaviour {
 	{
 		Debug.Log("in Obstacle! - " + other.transform.name);
 		if(other.transform.CompareTag("ScrollTrigger")){
-			transform.position =  new Vector2(Random.Range(-32, 32), transform.position.y + 120);
+			transform.position =  new Vector2(Random.Range(-32, 32), transform.position.y + 160);
 		}
 	}
 
