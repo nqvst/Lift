@@ -24,11 +24,14 @@ public class Player : MonoBehaviour {
 	void OnGUI(){
 		GUI.skin = skin;
 
-		GUILayout.Label("Height: " + height.ToString("f0"));
+		GUI.Label(new Rect(10, 10, 400, 100),"Height: " + height.ToString("f0"));
 
-		GUILayout.Label("High Score: " + highScore);
-
-		//GUILayout.Label("Velocity: " + rigidbody2D.velocity.magnitude.ToString("f0"));
+		GUI.Label(new Rect(Screen.width - 250, 10, 250, 100),"Best: " + highScore);  
+//		GUILayout.BeginHorizontal();
+//		GUILayout.Label("Height: " + height.ToString("f0"));
+//		GUILayout.Space(50);
+//		GUILayout.Label("Best: " + highScore);
+//		GUILayout.EndHorizontal();
 	}
 
 	void OnDie(){
