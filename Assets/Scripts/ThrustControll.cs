@@ -18,10 +18,13 @@ public class ThrustControll : MonoBehaviour {
 
 	public GUISkin skin;
 
+	private bool playerStarted = false;
+
 	void Update ()
 	{
-		rightEnginePosition = rightEngine.position;
-		leftEnginePosition =  leftEngine.position;
+
+		if(!playerStarted && transform.position.y > 20) Invoke("PlayerStarted", 1);
+
 	}
 	
 	void FixedUpdate () 
@@ -85,17 +88,26 @@ public class ThrustControll : MonoBehaviour {
 
 	private void ThrustLeft ()
 	{
-		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEnginePosition);
+		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
 	}
 
 	private void ThrustRight ()
 	{
+		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);	
+	}
 
-		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEnginePosition);	
+	void PlayerStarted()
+	{ 
+		playerStarted = true;	
 	}
 
 	void OnGUI ()
 	{
+		if(playerStarted) return;
+
 		GUI.skin = skin;
+
+		GUI.Box(new Rect(0, Screen.height - 200, 300, 110),"Thrust the Left engine ");
+		GUI.Box(new Rect(Screen.width - 300, Screen.height - 200 , 300, 110),"Thrust the Right engine ");
 	}
 }

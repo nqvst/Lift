@@ -22,7 +22,7 @@ public class FollowObject : MonoBehaviour {
 			if(target.gameObject == null){
 				targetPosition = startPosition;
 			}else{
-				targetPosition = new Vector3 (0, target.transform.position.y + yOffset, -10);
+				targetPosition = new Vector3 (target.transform.position.x * 0.4f, target.transform.position.y + yOffset, -10);
 			}
 		}
 		
