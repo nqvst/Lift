@@ -5,8 +5,15 @@ public class Player : MonoBehaviour {
 
 	public float height = 0;
 	private int highScore = 0;
+	private int collected = 0;
 
 	public GUISkin skin;
+
+	public Texture collectableTexture;
+
+	public Transform motivationSound;
+
+	private int lastHundredReached = 0;
 
 	bool showMotivationGui = false;
 	string motivationalString = "";
@@ -22,12 +29,10 @@ public class Player : MonoBehaviour {
 			height = transform.position.y;
 		}
 
-//		if(Mathf.Abs(transform.position.x) > 40){
-//			transform.position = new Vector2(transform.position.x * -0.9f, transform.position.y);
-//		}
-
-		if((Mathf.CeilToInt(transform.position.y) % 100) == 0){
-			motivationalString = Mathf.CeilToInt(transform.position.y).ToString();
+		if((Mathf.CeilToInt(transform.position.y) % 100) == 0 && Mathf.CeilToInt(transform.position.y) > lastHundredReached){
+			lastHundredReached = Mathf.CeilToInt(transform.position.y);
+			motivationalString = lastHundredReached.ToString();
+			Instantiate(motivationSound, transform.position, Quaternion.identity);
 			showMotivationGui = true;
 			Invoke("RemoveMotivation", 1.5f);
 		}
@@ -40,11 +45,16 @@ public class Player : MonoBehaviour {
 	void OnGUI()
 	{
 		GUI.skin = skin;
-		GUI.Label(new Rect(10, 10, 400, 100),"Height: " + height.ToString("f0"));
-		GUI.Label(new Rect(Screen.width - 250, 10, 250, 100),"Best: " + highScore);  
+		GUI.Label(new Rect(10, 10, 400, 50),"Height: " + height.ToString("f0"));
+		GUI.Label(new Rect(Screen.width - 250, 10, 250, 50),"Best: " + highScore);  
 		if(showMotivationGui){
-			GUI.Label(new Rect(Screen.width/2 -50, Screen.height/2 -100, 250, 100), motivationalString + "!");
+			GUI.contentColor = Color.green;
+			GUI.Label(new Rect(Screen.width/2 -50, Screen.height/2 -100, 250, 50), motivationalString + "!");
 		}
+
+		GUI.DrawTexture(new Rect(20, 70, 30, 30), collectableTexture);
+		GUI.Label(new Rect(50, 60, 200, 100)," " + collected.ToString());
+
 	}
 
 	void OnDie()
@@ -52,5 +62,10 @@ public class Player : MonoBehaviour {
 		if(highScore < Mathf.CeilToInt(height)){
 			PlayerPrefs.SetInt("HighScore", Mathf.CeilToInt(height));
 		}
+	}
+
+	void OnPickUp()
+	{
+		collected++;
 	}
 }

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Exhaust : MonoBehaviour {
 
-	public float amount = 100;
 	public enum Side { Left = 0, Right = 1 }
 	public Side side;
 

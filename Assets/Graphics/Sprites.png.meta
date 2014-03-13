@@ -93,8 +93,8 @@ TextureImporter:
     - name: Rock1
       rect:
         serializedVersion: 2
-        x: 20
-        y: 267
+        x: 316
+        y: 8
         width: 539
         height: 465
       alignment: 0
@@ -102,10 +102,64 @@ TextureImporter:
     - name: Rock2
       rect:
         serializedVersion: 2
-        x: 598
-        y: 29
+        x: 929
+        y: 31
         width: 527
         height: 381
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 1340
+        width: 139
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll2
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1183
+        width: 139
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll3
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 1039
+        width: 139
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll4
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 896
+        width: 139
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll5
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 748
+        width: 139
+        height: 139
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: coll6
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 588
+        width: 139
+        height: 139
       alignment: 0
       pivot: {x: .5, y: .5}
   spritePackingTag: 
