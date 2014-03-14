@@ -4,10 +4,10 @@ using System.Collections;
 public class Collectable : MonoBehaviour {
 
 	public Transform pickUpEffectPrefab;
-	public Transform collectablePrefab;
+//	public Transform collectablePrefab;
 
-	public float range = 10;
-	public float frequency = 50;
+//	public float range = 10;
+//	public float frequency = 50;
 
 	void Start () {
 	
@@ -17,12 +17,17 @@ public class Collectable : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		Debug.Log(other.transform.tag + " - Pickup");
-		if(!other.transform.CompareTag("ScrollTrigger"))
+
+		if(other.transform.CompareTag("Boundries"))
 		{
+			Debug.Log(other.transform.tag + " - Pickup");
+			Destroy(gameObject);
+		} else {
+			Debug.Log(other.transform.tag + " - Pickup (else)");
 			Instantiate(pickUpEffectPrefab, transform.position, Quaternion.identity);
-			Instantiate(collectablePrefab, new Vector2(Random.Range(-range, range), transform.position.y + frequency), Quaternion.identity);
 			Destroy(gameObject);
 			other.transform.SendMessage("OnPickUp");
+
 		}
 
 	}

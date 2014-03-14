@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	void Start()
 	{
 		highScore = PlayerPrefs.GetInt("HighScore");
+		collected = PlayerPrefs.GetInt("Score");
 	}
 
 	void Update()
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour {
 		if(highScore < Mathf.CeilToInt(height)){
 			PlayerPrefs.SetInt("HighScore", Mathf.CeilToInt(height));
 		}
+		PlayerPrefs.SetInt("Score", collected);
 	}
 
 	void OnPickUp()
