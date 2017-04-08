@@ -7,9 +7,9 @@ public class ProximityWarning : MonoBehaviour {
 	private float distance;
 	public AudioClip alertSound;
 	float lastPlayed = 0;
-
-	void Start () {
-	
+	AudioSource audio;
+	void Awake () {
+		audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame

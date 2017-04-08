@@ -8,6 +8,8 @@ public class ThrustControll : MonoBehaviour {
 	Vector2 rightEnginePosition;
 	Vector2 leftEnginePosition;
 
+	Rigidbody2D rb;
+
 	public Transform leftEngine;
 	public Transform rightEngine;
 
@@ -19,6 +21,12 @@ public class ThrustControll : MonoBehaviour {
 	public GUISkin skin;
 
 	private bool playerStarted = false;
+	public AudioSource audio;
+
+	void Awake() {
+		audio = GetComponent<AudioSource> ();
+		rb = GetComponent<Rigidbody2D> ();
+	}
 
 	void Update ()
 	{
@@ -26,14 +34,14 @@ public class ThrustControll : MonoBehaviour {
 		if(!playerStarted && transform.position.y > 20) Invoke("PlayerStarted", 1);
 
 	}
-	
-	void FixedUpdate () 
+
+	void FixedUpdate ()
 	{
 
 		if (Input.touchCount > 0)
 		{
 
-			foreach (Touch touch in Input.touches) 
+			foreach (Touch touch in Input.touches)
 			{
 				if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
 				{
@@ -48,10 +56,10 @@ public class ThrustControll : MonoBehaviour {
 						isThrusting = true;
 					}
 				}
-			}			
+			}
 		}
 
-	
+
 		if ( Input.GetAxis("ThrustL") > 0 )
 		{
 			ThrustLeft();
@@ -82,23 +90,22 @@ public class ThrustControll : MonoBehaviour {
 		float max = 1.2f;
 		float min = 0.1f;
 
-		audio.pitch = Mathf.Min(max, min +  rigidbody2D.velocity.magnitude / 90 );
-
+		audio.pitch = Mathf.Min(max, min +  rb.velocity.magnitude / 90 );
 	}
 
 	private void ThrustLeft ()
 	{
-		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
+		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
 	}
 
 	private void ThrustRight ()
 	{
-		rigidbody2D.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);	
+		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
 	}
 
 	void PlayerStarted()
-	{ 
-		playerStarted = true;	
+	{
+		playerStarted = true;
 	}
 
 	void OnGUI ()
