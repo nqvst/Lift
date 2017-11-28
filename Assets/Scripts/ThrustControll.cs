@@ -22,6 +22,8 @@ public class ThrustControll : MonoBehaviour {
 
 	private bool playerStarted = false;
 	public AudioSource audio;
+	[SerializeField] [Range(0, 100)]float autoCorrectRatio = 1;
+	[SerializeField] bool inverControls = false;
 
 	void Awake() {
 		audio = GetComponent<AudioSource> ();
@@ -91,16 +93,28 @@ public class ThrustControll : MonoBehaviour {
 		float min = 0.1f;
 
 		audio.pitch = Mathf.Min(max, min +  rb.velocity.magnitude / 90 );
+
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.fixedDeltaTime * autoCorrectRatio);
+
 	}
 
 	private void ThrustLeft ()
 	{
-		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
+		if(inverControls) {
+			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
+		} else {
+			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
+		}
 	}
 
 	private void ThrustRight ()
 	{
-		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
+
+		if(inverControls) {
+			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
+		} else {
+			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
+		}
 	}
 
 	void PlayerStarted()
