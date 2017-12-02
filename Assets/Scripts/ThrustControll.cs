@@ -90,7 +90,7 @@ public class ThrustControll : MonoBehaviour {
 		audio.volume = currentVolume;
 
 		float max = 1.2f;
-		float min = 0.1f;
+		float min = 0.5f;
 
 		audio.pitch = Mathf.Min(max, min +  rb.velocity.magnitude / 90 );
 

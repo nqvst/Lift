@@ -10,7 +10,11 @@ public class Collectable : MonoBehaviour {
 //	public float frequency = 50;
 
 	void Start () {
-	
+
+	}
+
+	void Update() {
+		transform.Rotate(Vector3.up * 200f * Time.deltaTime);
 	}
 
 
