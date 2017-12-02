@@ -33,7 +33,7 @@ public class Health : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.transform.CompareTag ("Obstacle")) {
+		if (other.transform.CompareTag ("Obstacle") || other.transform.CompareTag ("Boundries")) {
 			Vector3 p = other.transform.position - transform.position;
 			health -= rb.velocity.magnitude * damageImpact;
 			rb.AddForceAtPosition(transform.TransformDirection(p) * 1000, p.normalized);
@@ -46,14 +46,6 @@ public class Health : MonoBehaviour {
 		gameObject.SendMessage("OnDie");
 		Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 		Invoke("Respawn", 1f);
-	}
-
-	void OnTriggerExit2D(Collider2D other)
-	{
-		Debug.Log(other.transform.name);
-		if(other.transform.CompareTag("Boundries")){
-			health = 0;
-		}
 	}
 
 }
