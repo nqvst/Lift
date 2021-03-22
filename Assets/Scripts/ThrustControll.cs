@@ -18,23 +18,12 @@ public class ThrustControll : MonoBehaviour {
 
 	bool isThrusting = false;
 
-	public GUISkin skin;
-
-	private bool playerStarted = false;
 	public AudioSource audio;
 	[SerializeField] [Range(0, 100)]float autoCorrectRatio = 1;
-	[SerializeField] bool inverControls = false;
 
 	void Awake() {
 		audio = GetComponent<AudioSource> ();
 		rb = GetComponent<Rigidbody2D> ();
-	}
-
-	void Update ()
-	{
-
-		if(!playerStarted && transform.position.y > 20) Invoke("PlayerStarted", 1);
-
 	}
 
 	void FixedUpdate ()
@@ -100,35 +89,11 @@ public class ThrustControll : MonoBehaviour {
 
 	private void ThrustLeft ()
 	{
-		if(inverControls) {
-			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
-		} else {
-			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
-		}
+		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
 	}
 
 	private void ThrustRight ()
 	{
-
-		if(inverControls) {
-			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, leftEngine.position);
-		} else {
-			rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
-		}
-	}
-
-	void PlayerStarted()
-	{
-		playerStarted = true;
-	}
-
-	void OnGUI ()
-	{
-		if(playerStarted) return;
-
-		GUI.skin = skin;
-
-		GUI.Box(new Rect(0, Screen.height - 200, 300, 110),"Thrust the Left engine ");
-		GUI.Box(new Rect(Screen.width - 300, Screen.height - 200 , 300, 110),"Thrust the Right engine ");
+		rb.AddForceAtPosition(transform.TransformDirection(Vector2.up) * force, rightEngine.position);
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 
@@ -28,6 +29,7 @@ public class Health : MonoBehaviour {
 
 	void Respawn()
 	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
